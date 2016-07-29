@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<script>
+			$(document).ready(function(){
+				$(".button").click(function(){
+  						$(".table").append("<tr class='all'>"+"<td class='zadatak'>" + $(".input").val() + "</td>"+"<td class='done'>" + "DONE" + "</td>"+"</td>"+"<td class='editt'>" + "EDIT" + "</td>"+"</td>"+"<td class='xx'>" + "X" + "</td>" + "<td class='plus'>" + "+" + "</td>" + "<td class='minus'>" +"-"+"</td>" + "<td class='broj'>" + "1" + "</td>" + "</tr>");
+ 
+						});
+  			
+				$(document).on("click", ".xx", function(){
+					$(this).parent().hide();
+				});
+				
+
+			
+				$(document).on("click", ".done", function(){
+					$(this).parent().css("background-color","green");
+				});
+			
+
+			
+				$(".table").on("click", ".editt", function(){
+       					 $(this).closest('tr').find(".zadatak").empty();
+						$(this).closest('tr').find(".zadatak").append( $("#my-input").val() );
+    						});
+
+
+					
+					$(document).on("click",".plus", function() {
+						var n= parseInt($(this).closest('tr').find(".broj").html());
+						if(n<20){
+ 						 $(this).closest('tr').find(".broj").html(++n);
+							}
+						});
+						
+
+					
+					$(document).on("click", ".minus", function() {
+						var n= parseInt($(this).closest('tr').find(".broj").html());
+						if(n>0){
+ 						$(this).closest('tr').find(".broj").html(--n);
+							}
+						});
+  					});
+				
+				
+
+		</script>
+	<title>naslov</title>
+	<link rel="stylesheet" type="text/css" href="gagastil.css"/>
+<head>
+<body>
+	<div id="logo"></div>
+	<div id="all">
+		<div id="textarea">
+			<input  placeholder="New staff to table" class="input" id="my-input"></input>
+		</div>
+		<div id="button">	
+			<button class="button"><p>Click to add</p></button>
+		</div>
+		<div id="table">
+			<table border="1px" class="table">
+				<tr>
+					<td >Naziv</td>
+					<td colspan="3">Actions</td>
+					<td colspan="3">Kolicina</td>
+				</tr>
+				<tr class="all">
+					<td class="zadatak">Zadaca</td>
+					<td class="done">DONE</td>
+					<td class="editt">EDIT</td>
+					<td class="xx">X</td>
+					<td class="plus">+</td>
+					<td class="minus">-</td>
+					<td class="broj">1</td>
+				</tr>
+				
+			</table>
+		</div>
+		
+		
+</body>
